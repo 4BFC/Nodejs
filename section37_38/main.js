@@ -59,7 +59,15 @@ let app = http.createServer(function (request, response) {
           let title = queryData.id;
           let list = templateList(filelist);
           let template = templateHTML(title, list,
-            `<h2>${title}</h2>${description}`, `<a href="/create">create</a> <a href="/update?id=${title}">update</a>`);
+            `<h2>${title}</h2>${description}`,
+            `<a href="/create">create</a> 
+            <a href="/update?id=${title}">update</a>
+            <!-- <a href="/delete?id=${title}">delete</a> -->
+            <form action="delete_process" method="POST" onsubmit="">
+              <input type="hidden" name = "id" value="${title}">
+              <input type="submit" value="delete">
+            </form>`
+          );
           response.writeHead(200);
           response.end(template);
         });
@@ -145,6 +153,21 @@ let app = http.createServer(function (request, response) {
           response.writeHead(302, { Location: `/?id=${title}` }); //200이란 web브라우저의 승인으로 생성
           response.end();
         })
+      })
+      // console.log(post); //post가 되었는지 확인
+    });
+  } else if (pathname === '/delete_process') {
+    let body = ''
+    request.on('data', function (data) {//이부분이 이해가 안감
+      body = body + data
+    });
+
+    request.on('end', function () {
+      let post = qs.parse(body) //querystring 모듈을 통해서 create에서 post로 전송받은 값을 가져올 수 있다.
+      let id = post.id;
+      fs.unlink(`data/${id}`, function (error) {
+        response.writeHead(302, { Location: `/` });
+        response.end();
       })
       // console.log(post); //post가 되었는지 확인
     });
