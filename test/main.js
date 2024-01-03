@@ -34,8 +34,7 @@ let app = http.createServer((request, response) => {
     }
   }//if(pathname === '/')
   else if (pathname === '/1st_page') {
-    if (queryData.id === undefined) {
-      let HTML = `
+    let HTML = `
       <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -52,10 +51,69 @@ let app = http.createServer((request, response) => {
         </body>
       </html>
       `
-      response.writeHead(200);
-      response.end(HTML);
-    }
-  }//else if (pathname === '/')
+    response.writeHead(200);
+    response.end(HTML);
+  } else if (pathname === '/2nd_page') {
+    let HTML = `
+      <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>2nd_page</title>
+        </head>
+        <body>
+        <h1>This is 2nd_page</h1>
+        <a href="/1st_page">1st page</a>
+        <a href="/">main page</a>
+        <a href="/3th_page">3th page</a>
+        <a href="/4th_page">4th page</a>
+        </body>
+      </html>
+      `
+    response.writeHead(200);
+    response.end(HTML);
+  } else if (pathname === '/3th_page') {
+    let HTML = `
+      <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>3th_page</title>
+        </head>
+        <body>
+        <h1>This is 3th_page</h1>
+        <a href="/1st_page">1st page</a>
+        <a href="/2nd_page">2nd page</a>
+        <a href="/">main page</a>
+        <a href="/4th_page">4th page</a>
+        </body>
+      </html>
+      `
+    response.writeHead(200);
+    response.end(HTML);
+  } else if (pathname === '/4th_page') {
+    let HTML = `
+      <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>4th_page</title>
+        </head>
+        <body>
+        <h1>This is 4th_page</h1>
+        <a href="/1st_page">1st page</a>
+        <a href="/2nd_page">2nd page</a>
+        <a href="/3th_page">3th page</a>
+        <a href="/">main page</a>
+        </body>
+      </html>
+      `
+    response.writeHead(200);
+    response.end(HTML);
+  }
 
 });
 //서버 리스닝
