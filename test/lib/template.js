@@ -6,12 +6,12 @@
 module.exports = {
 
   list: function (queryData_id) {//queryData_id
-    let main_page = '<a href="/">main page</a><br>';
+    let main_page = '<a href="/">main page</a>';
     // let change_page = ''
     let list_page = [];
     //각 페이지 생성하는 코드
     for (let i = 0; i < 4; i++) {
-      list_page.push(`<a href="/?id=${i + 1}_page">${i + 1} page</a><br>`);
+      list_page.push(`<a href="/?id=${i + 1}_page">${i + 1} page</a>`);
       if (queryData_id === `${i + 1}_page`) {
         list_page[i] = main_page;
       }
