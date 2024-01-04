@@ -8,13 +8,14 @@ let template = require('./lib/template.js')
 let app = http.createServer(function (request, response) {
   let _url = request.url;
   let queryData = url.parse(_url, true).query;
-  console.log(queryData)
+  console.log(queryData.id)
   let pathname = url.parse(_url, true).pathname;
   console.log(pathname)
 
   //url주소를 통해서 주고 받는 id의 값이나 매개변수에 따라서 달라지는 조건문
   if (pathname === '/') { //전반적으로 라우팅 로직이 사용되었다.
-    if (queryData.id === undefined) { //url(queryData.id주소)이 정해진 것 없는 상태
+    if (queryData.id === undefined) { //클라이언트로 부터 받은 url(queryData.id주소)이 정해진 것 없는 상태
+      // console.log(queryData.id)
       fs.readdir('./data', function (error, filelist) {
         let title = 'Welcome';
         let description = 'Hello, Node.js';
@@ -37,6 +38,7 @@ let app = http.createServer(function (request, response) {
 
       });
     } else {
+      // console.log(queryData.id)
       fs.readdir('./data', function (error, filelist) {
         //이부분이 아직 완벽히 이해가 안감 어떻게 id=?구문을 생략할 수 있지?
         //그 이유는 url모듈(let url = require('url');)을 사용해서 id=?구문을 따로 구분할 수 있기 때문이다.
@@ -60,6 +62,7 @@ let app = http.createServer(function (request, response) {
     };
   } else if (pathname === '/create') { //create 할 때의 경로
     //pathname(url.parse(_url, true).pathname)이 create일 경우 아래 코드 실행
+    // console.log(queryData.id)
     fs.readdir('./data', function (error, filelist) {
       let title = 'WEB - create';
       // let description = 'Hello, Node.js';
