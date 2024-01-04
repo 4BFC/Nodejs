@@ -52,3 +52,12 @@ app.listen(3000);
 ```
 서버를 3000번 포트에서 리스닝하도록 설정한다. 클라이언트가 이 포트로 HTTP 요청을 보낼 경우, 서버는 해당 요청에 대한 응답을 생성하게 된다.
 
+* queryData.id :
+queryData.id는 클라이언트로 부터 받는 URL이다. 즉, a태그로 부터 받은 href=?id= 값에 따라 queryData.id가 변동된다.
+```
+<a href="/1st_page">1st page</a>
+```
+위와 같이 코드를 작성하면 queryData.id는 계속해서 undefined를 출력할 것이다. 이를 수정하면 아래와 같이 a태그를 변경 해야한다.
+```
+<a href="/?id=1st_page">1st page</a>
+```
