@@ -61,3 +61,6 @@ queryData.id는 클라이언트로 부터 받는 URL이다. 즉, a태그로 부�
 ```
 <a href="/?id=1st_page">1st page</a>
 ```
+
+* queryData.id와 Pathname의 차이는?
+queryData.id는 get인가?
