@@ -12,7 +12,6 @@ let app = http.createServer((request, response) => {
   // console.log(queryData.id)
   let pathname = url.parse(_url, true).pathname;
   // console.log(pathname)
-  let queryData_id = queryData.id
   if (pathname === '/') {
 
     //page_1부분 생성하기
@@ -25,15 +24,29 @@ let app = http.createServer((request, response) => {
     }
 
     else {
-      let HTML = template.html(queryData.id, template.list(queryData.id), queryData.id);
+      let HTML = template.html(queryData.id, template.list(queryData.id));
 
       response.writeHead(200);
       response.end(HTML);
     }
-  } else if (pathname === `/page_1`) {
+  } else if (pathname === `/description`) {
+    let queryData = url.parse(_url, true).query;
     console.log(queryData.id)
-    let HTML = `<h1>${pathname} description</h1>`
 
+    let HTML = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>test</title>
+    </head>
+    <body>
+      <h1>This is test</h1>
+      <a href="/description/?id=test">test page</a><br>
+    </body>
+    </html>
+  `;
     response.writeHead(200);
     response.end(HTML);
   }
