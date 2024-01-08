@@ -2,7 +2,7 @@ let http = require('http');
 let fs = require('fs');
 let url = require('url');
 let qs = require('querystring'); //querystring모듈
-const path = require('path');
+// const path = require('path');
 let template = require('./lib/template.js')
 
 let app = http.createServer(function (request, response) {

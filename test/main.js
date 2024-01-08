@@ -30,7 +30,7 @@ let app = http.createServer((request, response) => {
       response.end(HTML);
     }
   } else if (pathname === `/description`) {
-    let queryData = url.parse(_url, true).query;
+    let queryData = url.parse(_url, true).query; //임의적 추가
     console.log(queryData.id)
 
     let HTML = `
