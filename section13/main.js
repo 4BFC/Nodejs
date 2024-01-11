@@ -1,12 +1,12 @@
 //해당 기능이 동작하는 원리를 파악해야한다
-var http = require('http');
-var fs = require('fs');
-var url = require('url');
+let http = require('http');
+let fs = require('fs');
+let url = require('url');
 
-var app = http.createServer(function (request, response) {
-  var _url = request.url;
-  var queryData = url.parse(_url, true).query;
-  var title = queryData.id;
+let app = http.createServer(function (request, response) {
+  let _url = request.url;
+  let queryData = url.parse(_url, true).query;
+  let title = queryData.id;
   console.log(queryData.id)
   if (_url == '/') {
     // _url = '/index.html';
@@ -16,8 +16,9 @@ var app = http.createServer(function (request, response) {
     return response.writeHead(404);
   }
   response.writeHead(200);
+  //readFile
   fs.readFile(`data/${queryData.id}`, 'utf8', function (err, description) {
-    var template = `
+    let template = `
     <!doctype html>
     <html>
     <head>

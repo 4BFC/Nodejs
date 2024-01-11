@@ -1,4 +1,4 @@
-var args = process.argv;
+let args = process.argv;
 console.log('A');
 console.log('B');
 if (args[2] === '1') {

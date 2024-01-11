@@ -49,6 +49,9 @@ let app = http.createServer((request, response) => {
   `;
     response.writeHead(200);
     response.end(HTML);
+  } else {
+    response.writeHead(404);
+    response.end('Not found');
   }
 });
 //서버 리스닝
