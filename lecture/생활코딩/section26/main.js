@@ -18,6 +18,7 @@ function templateHTML(title, list, body) {
   </html>
   `;
 }
+
 function templateList(filelist) {
   var list = '<ul>';
   var i = 0;
