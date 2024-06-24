@@ -2,7 +2,7 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 const path = require('path');
-
+console.log(path);
 function templateHTML(title, list, body) {//list는 받아온 list를 return을 통해서 제작된다.
   return `
   <!doctype html>
@@ -67,7 +67,7 @@ var app = http.createServer(function (request, response) {
       // var description = 'Hello, Node.js';
       var list = templateList(filelist); //해당 매개변수로 받아온다. 여기서 이해가 안감.
       var template = templateHTML(title, list, `
-      <form action="http://http://localhost:3000/process_create" method="POST">
+      <form action="http://http://localhost:3000/create_process" method="POST">
         <p><input type="text" name="title" placeholder="title"></p>
         <p>
           <textarea name="description" placeholder="description"></textarea>

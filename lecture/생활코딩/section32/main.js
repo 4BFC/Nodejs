@@ -88,19 +88,19 @@ var app = http.createServer(function (request, response) {
       body = body + data
     })
     request.on('end', function () {
+      console.log("body: ", body);
+      console.log("queryString: ", qs);
       let post = qs.parse(body) //querystring 모듈을 통해서 create에서 post로 전송받은 값을 가져올 수 있다.
       var title = post.title;
       var description = post.description;
-      console.log(post)
+      console.log("post: ", post)
     })
     response.writeHead(200); //200이란 web브라우저의 승인으로 생성
     response.end('success');
   } else {
     response.writeHead(404); //아무 것도 아닐때 404를 호출
+    console.log('Not Found : 404');
     response.end('Not found');
   }
-
-
-
 });
 app.listen(3000);
